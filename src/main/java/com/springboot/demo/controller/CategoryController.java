@@ -18,6 +18,8 @@ import com.github.pagehelper.PageInfo;
 public class CategoryController {
     @Autowired
     CategoryMapper categoryMapper;
+    @Autowired
+    String string;
 
     @RequestMapping("/addCategory")
     public String addCategory(Category c) throws Exception {
@@ -40,7 +42,6 @@ public class CategoryController {
         m.addAttribute("c", c);
         return "editCategory";
     }
-
     @RequestMapping("/listCategory")
     public String listCategory(Model m,@RequestParam(value = "start", defaultValue = "0") int start,@RequestParam(value = "size", defaultValue = "5") int size) throws Exception {
         PageHelper.startPage(start,size,"id desc");
